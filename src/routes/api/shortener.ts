@@ -31,6 +31,7 @@ export const post = async (request: Request): Promise<Response> => {
         };
     }
 
+    const plop = 42;
     const connectionString = process.env['COSMOSDB']?.toString();
 
     if (connectionString == null)
