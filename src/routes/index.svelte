@@ -7,22 +7,40 @@
     import Paper from '@smui/paper';
     import Fab from '@smui/fab';
     import { Icon } from '@smui/common';
+    import type { LongUrl } from '$lib/types';
 
     let value = '';
 
     function doShortener()
     {
+        const longUrl: LongUrl = {
+            url: value
+        };
+
+        fetch('/api/shortener', {
+            method: "POST",
+            body: JSON.stringify(longUrl),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then((response) => {
+            console.log(response);
+        });
     }
 
-    function handleKeyDown(event: CustomEvent | KeyboardEvent)
+    function handleKeyDown(event)
     {
-        event = event as KeyboardEvent;
         if (event.key === 'Enter')
         {
             doShortener();
         }
     }
 </script>
+
+<svelte:head>
+    <title>Shorten your URL - NoTrack : For a private, add and tracking free web.</title>
+</svelte:head>
 
 <div class="solo-demo-container solo-container">
     <Paper class="solo-paper" elevation={6}>
