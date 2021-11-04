@@ -53,7 +53,7 @@ export const post = async (request: Request): Promise<Response> => {
         Views: 0
     };
 
-    storageClient.insertOrMergeEntity("redirections", redirection, function (error, result, response) {
+    storageClient.insertEntity("redirections", redirection, function (error, result, response) {
         if (error) {
             console.log(error);
             return;
