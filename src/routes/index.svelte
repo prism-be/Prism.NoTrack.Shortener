@@ -4,12 +4,13 @@
 
 <script lang="ts">
 	import { Input } from '@smui/textfield';
-	import Paper from '@smui/paper';
+	import Paper, { Title, Content } from '@smui/paper';
 	import Fab from '@smui/fab';
 	import { Icon } from '@smui/common';
-	import type { LongUrl } from '$lib/types';
+	import type { LongUrl, ShortUrl } from '$lib/types';
 
 	let value = '';
+	let shortened = '';
 
 	function doShortener() {
 		const longUrl: LongUrl = {
@@ -23,7 +24,9 @@
 				'Content-type': 'application/json; charset=UTF-8'
 			}
 		}).then((response) => {
-			console.log(response);
+			response.json().then((shortUrl: ShortUrl) => {
+                shortened = shortUrl.url;
+            })
 		});
 	}
 
@@ -38,7 +41,7 @@
 	<title>Shorten your URL - NoTrack : For a private, add and tracking free web.</title>
 </svelte:head>
 
-<div class="solo-demo-container solo-container">
+<div class="solo-input-container solo-container">
 	<Paper class="solo-paper" elevation={6}>
 		<Icon class="material-icons">link</Icon>
 		<Input
@@ -53,12 +56,23 @@
 	</Fab>
 </div>
 
-<pre class="status">Value: {value}</pre>
+<div class="solo-result-container solo-container">
+	<Paper class="solo-result-paper" elevation={6}>
+		<Title>Here is your shortened url !</Title>
+        <Content><a href={shortened} target="_blank">{shortened}</a></Content>
+	</Paper>
+</div>
 
 <style>
-	.solo-demo-container {
+	.solo-input-container {
 		padding: 36px 18px;
 		background-color: #f8f8f8;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+    .solo-result-container {
+		margin-top: 25px;
+        padding: 36px 18px;
 		border: 1px solid rgba(0, 0, 0, 0.1);
 	}
 
@@ -76,6 +90,12 @@
 		margin: 0 12px;
 		padding: 0 12px;
 		height: 48px;
+	}
+
+    * :global(.solo-result-paper) {
+		max-width: 640px;
+        width:100%;
+        padding: 12px;
 	}
 
 	* :global(.solo-paper > *) {

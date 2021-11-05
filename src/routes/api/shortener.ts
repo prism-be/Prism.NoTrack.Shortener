@@ -19,7 +19,7 @@ export const post = async (request: Request): Promise<Response> => {
 
     var data: any = request.body;
 
-    if (!data.url.startsWith('https://' || !data.url.startsWith('http://'))) {
+    if (!data.url.startsWith('https://') && !data.url.startsWith('http://')) {
         return {
             status: 400,
             headers
