@@ -1,7 +1,8 @@
 import type { Response, Request } from '@sveltejs/kit';
 import type { ResponseHeaders } from '@sveltejs/kit/types/helper';
 import { getServerConfiguration } from '$lib/config';
-import storage from 'azure-storage';
+import { CosmosClient } from '@azure/cosmos';
+import type { Redirection } from '$lib/types';
 
 export const get = async (request: Request): Promise<Response> => {
     const { slug } = request.params;
@@ -20,26 +21,35 @@ export const get = async (request: Request): Promise<Response> => {
 
     var serverConfiguration = getServerConfiguration();
 
-    const storageClient = storage.createTableService(serverConfiguration.cosmosDbConnectionString);
-    storageClient.retrieveEntity('redirections', partition, slug, (error, result: any, response) => {
-        if (!error) {
-            console.log(result);
-            result.Views = result.Views++;
-            var longUrl = result.LongUrl.toString();
-            console.log(longUrl);
+    const cosmosClient = new CosmosClient(serverConfiguration.cosmosDbConnectionString)
+    const database = cosmosClient.database('shortener');
+    const container = database.container('redirections');
+    var item = container.item(slug, partition);
+    var redirection = await item.read();
 
-            storageClient.replaceEntity('redirections', result, (error, result, response) => {
-                if (!error) {
-                    console.log(result);
-                }
-            });
+    if (redirection.statusCode == 404)
+    {
+        return {
+            status: 404,
+            headers: headers
         }
-    });
+    }
 
-console.log('plop');
+    var redirectionContent : Redirection = {
+        id: redirection.resource.id,
+        longUrl: redirection.resource.longUrl,
+        partition: redirection.resource.partition,
+        views: ++redirection.resource.views
+    };
+
+    await item.replace(redirectionContent);
+
+    headers = {
+        'Location' : redirectionContent.longUrl
+    };
 
     return {
-        status: 200,
+        status: 302,
         headers: headers
     }
 }

@@ -7,20 +7,18 @@ export interface IServerConfiguration {
 }
 
 export function getServerConfiguration(): IServerConfiguration {
-    var cosmosDbConnectionString = process.env['COSMOSDB']?.toString();
-
-    if (cosmosDbConnectionString == null || cosmosDbConnectionString === '') {
-        throw new Error("The environment variable 'COSMOSDB' has not been set.");
-    }
-
-    var shortDomain = process.env['SHORT_DOMAIN']?.toString();
-
-    if (shortDomain == null || shortDomain === '') {
-        throw new Error("The environment variable 'SHORT_DOMAIN' has not been set.");
-    }
-
     return {
-        cosmosDbConnectionString,
-        shortDomain
+        cosmosDbConnectionString: getEnv('COSMOSDB_CONNECTIONSTRING'),
+        shortDomain: getEnv('SHORT_DOMAIN'),
     };
+}
+
+function getEnv(envKey: string): string {
+    const value = process.env[envKey]?.toString();
+
+    if (value == null || value === '') {
+        throw new Error(`The environment variable '${envKey}' has not been set.`);
+    }
+
+    return value;
 }
