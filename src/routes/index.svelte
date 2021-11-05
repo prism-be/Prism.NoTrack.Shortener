@@ -85,7 +85,7 @@
 			Short answer is nothing. The long answer is, of course there are some technical logs on the servers, but without any user informations.<br />
 			Also, the number of use of each link is stored in database.<br />
 			Nothing else :)<br />
-			If you want to be sure of that, you can check by yourself on <a href="https://s.notrack.cloud/r/zeUL5Bears5ME7-NJl7aQ">this repository</a>.
+			If you want to be sure of that, you can check by yourself on <a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
 
 			<Subtitle class="paper-subtitle">Free to use, but not to run</Subtitle>
 			Of course, these tools are not free to run. I make these because I really like the
