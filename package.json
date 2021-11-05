@@ -40,7 +40,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"azure-storage": "^2.10.5",
+		"@azure/cosmos": "^3.14.1",
 		"nanoid": "^3.1.30"
 	}
 }

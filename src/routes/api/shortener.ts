@@ -1,18 +1,14 @@
 ﻿import type { Response, Request } from '@sveltejs/kit';
-import type { LongUrl, ShortUrl } from '$lib/types';
 import type { ResponseHeaders } from '@sveltejs/kit/types/helper';
+import type { Redirection, ShortUrl } from '$lib/types';
 import { nanoid } from 'nanoid';
-import storage from 'azure-storage';
-
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { getServerConfiguration, IServerConfiguration } from '$lib/config';
+import { CosmosClient } from '@azure/cosmos';
 
 export const post = async (request: Request): Promise<Response> => {
-
     let headers: ResponseHeaders = {
-
-    }
+        'Content-type': 'application/json; charset=UTF-8'
+    };
 
     if (request.body === null) {
         return {
@@ -23,72 +19,40 @@ export const post = async (request: Request): Promise<Response> => {
 
     var data: any = request.body;
 
-    if (!data.url.startsWith('https://' || !data.url.startsWith('http://')))
-    {
+    if (!data.url.startsWith('https://') && !data.url.startsWith('http://')) {
         return {
             status: 400,
             headers
         };
     }
 
-    const connectionString = process.env['COSMOSDB']?.toString();
+    var serverConfiguration = getServerConfiguration();
 
-    if (connectionString == null)
-    {
-        return {
-            status: 500,
-            body: 'The CosmosDB connection string is not found',
-            headers
-        };;
-    }
-
-    const storageClient = storage.createTableService(connectionString);
-
-    var id = nanoid();
-    var partition = id.substring(0, 5);
-    var redirection = {
-        PartitionKey: partition,
-        RowKey: id,
-        LongUrl: data.url,
-        Views: 0
+    const cosmosClient = new CosmosClient(serverConfiguration.cosmosDbConnectionString)
+    const database = cosmosClient.database('shortener');
+    const container = database.container('redirections');
+    
+    const id = nanoid();
+    const redirection: Redirection = {
+        id,
+        partition: id.substring(0,5),
+        longUrl: data.url,
+        views: 0
     };
 
-    storageClient.insertEntity("redirections", redirection, function (error, result, response) {
-        if (error) {
-            console.log(error);
-            return;
-        }
+    const result = await container.items.create(redirection);
 
-        console.log("   insertOrMergeEntity succeeded.");
-    });
+    console.log(result);
 
     return {
         status: 200,
-        body: JSON.stringify(getShortUrl(redirection)),
+        body: JSON.stringify(getShortUrl(redirection, serverConfiguration)),
         headers: headers
     }
 }
 
-export const get = async (request: Request): Promise<Response> => {
-    console.log(request.body);
-
-    var json = JSON.stringify({
-        "hello": "world"
-    });
-
-    let headers: ResponseHeaders = {
-
-    }
-
+function getShortUrl(redirection: { id: string }, serverConfiguration: IServerConfiguration): ShortUrl {
     return {
-        status: 200,
-        body: json,
-        headers: headers
-    }
-}
-
-function getShortUrl(redirection: { PartitionKey: string; RowKey: string; LongUrl: any; }): ShortUrl {
-    return {
-        url: redirection.RowKey
+        url: `${serverConfiguration.shortDomain}/r/${redirection.id}`
     };
 }
