@@ -41,6 +41,7 @@
 	"type": "module",
 	"dependencies": {
 		"@azure/cosmos": "^3.14.1",
-		"nanoid": "^3.1.30"
+		"nanoid": "^3.1.30",
+		"rate-limiter-flexible": "^2.3.3"
 	}
 }
