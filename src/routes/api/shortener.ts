@@ -39,7 +39,7 @@ export const post = async (request: Request): Promise<Response> => {
         Views: 0
     };
 
-    storageClient.insertEntity("redirections", redirection, function (error, result, response) {
+    storageClient.insertEntity("redirections", redirection, (error, result, response) => {
         if (error) {
             console.log(error);
             return;
@@ -49,24 +49,6 @@ export const post = async (request: Request): Promise<Response> => {
     return {
         status: 200,
         body: JSON.stringify(getShortUrl(redirection, serverConfiguration)),
-        headers: headers
-    }
-}
-
-export const get = async (request: Request): Promise<Response> => {
-    console.log(request.body);
-
-    var json = JSON.stringify({
-        "hello": "world"
-    });
-
-    let headers: ResponseHeaders = {
-
-    }
-
-    return {
-        status: 200,
-        body: json,
         headers: headers
     }
 }
