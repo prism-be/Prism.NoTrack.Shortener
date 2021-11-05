@@ -56,12 +56,16 @@
 	</Fab>
 </div>
 
+{#if shortened !== ''}
+
 <div class="solo-result-container solo-container">
 	<Paper class="solo-result-paper" elevation={6}>
 		<Title>Here is your shortened url !</Title>
         <Content><a href={shortened} target="_blank">{shortened}</a></Content>
 	</Paper>
 </div>
+
+{/if}
 
 <style>
 	.solo-input-container {
