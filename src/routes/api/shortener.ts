@@ -1,18 +1,14 @@
 ﻿import type { Response, Request } from '@sveltejs/kit';
-import type { LongUrl, ShortUrl } from '$lib/types';
 import type { ResponseHeaders } from '@sveltejs/kit/types/helper';
+import type { LongUrl, ShortUrl } from '$lib/types';
 import { nanoid } from 'nanoid';
 import storage from 'azure-storage';
-
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { getServerConfiguration, IServerConfiguration } from '$lib/config';
 
 export const post = async (request: Request): Promise<Response> => {
-
     let headers: ResponseHeaders = {
-
-    }
+        'Content-type': 'application/json; charset=UTF-8'
+    };
 
     if (request.body === null) {
         return {
@@ -23,26 +19,16 @@ export const post = async (request: Request): Promise<Response> => {
 
     var data: any = request.body;
 
-    if (!data.url.startsWith('https://' || !data.url.startsWith('http://')))
-    {
+    if (!data.url.startsWith('https://' || !data.url.startsWith('http://'))) {
         return {
             status: 400,
             headers
         };
     }
 
-    const connectionString = process.env['COSMOSDB']?.toString();
+    var serverConfiguration = getServerConfiguration();
 
-    if (connectionString == null)
-    {
-        return {
-            status: 500,
-            body: 'The CosmosDB connection string is not found',
-            headers
-        };;
-    }
-
-    const storageClient = storage.createTableService(connectionString);
+    const storageClient = storage.createTableService(serverConfiguration.cosmosDbConnectionString);
 
     var id = nanoid();
     var partition = id.substring(0, 5);
@@ -58,13 +44,11 @@ export const post = async (request: Request): Promise<Response> => {
             console.log(error);
             return;
         }
-
-        console.log("   insertOrMergeEntity succeeded.");
     });
 
     return {
         status: 200,
-        body: JSON.stringify(getShortUrl(redirection)),
+        body: JSON.stringify(getShortUrl(redirection, serverConfiguration)),
         headers: headers
     }
 }
@@ -87,8 +71,8 @@ export const get = async (request: Request): Promise<Response> => {
     }
 }
 
-function getShortUrl(redirection: { PartitionKey: string; RowKey: string; LongUrl: any; }): ShortUrl {
+function getShortUrl(redirection: { PartitionKey: string; RowKey: string; LongUrl: any; }, serverConfiguration: IServerConfiguration): ShortUrl {
     return {
-        url: redirection.RowKey
+        url: `${serverConfiguration.shortDomain}/r/${redirection.RowKey}`
     };
 }
