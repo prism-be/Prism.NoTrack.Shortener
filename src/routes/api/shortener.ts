@@ -6,6 +6,7 @@ import { getServerConfiguration, IServerConfiguration } from '$lib/config';
 import { CosmosClient } from '@azure/cosmos';
 
 export const post = async (request: Request): Promise<Response> => {
+
     let headers: ResponseHeaders = {
         'Content-type': 'application/json; charset=UTF-8'
     };
