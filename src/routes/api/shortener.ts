@@ -5,6 +5,20 @@ import { nanoid } from 'nanoid';
 import { getServerConfiguration, IServerConfiguration } from '$lib/config';
 import { CosmosClient } from '@azure/cosmos';
 
+
+export const options = async (request: Request): Promise<Response> => {
+
+    let headers: ResponseHeaders = {
+        'Content-type': 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin' :	'*'
+    };
+
+    return {
+        status: 204,
+        headers
+    };
+}
+
 export const post = async (request: Request): Promise<Response> => {
 
     let headers: ResponseHeaders = {
