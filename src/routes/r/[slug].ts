@@ -39,10 +39,7 @@ export const get = async (request: Request): Promise<Response> => {
         id: redirection.resource.id,
         longUrl: redirection.resource.longUrl,
         partition: redirection.resource.partition,
-        views: ++redirection.resource.views
     };
-
-    await item.replace(redirectionContent);
 
     headers = {
         'Location' : redirectionContent.longUrl

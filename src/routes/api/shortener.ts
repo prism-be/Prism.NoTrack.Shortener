@@ -37,8 +37,7 @@ export const post = async (request: Request): Promise<Response> => {
     const redirection: Redirection = {
         id,
         partition: id.substring(0,5),
-        longUrl: data.url,
-        views: 0
+        longUrl: data.url
     };
 
     const result = await container.items.create(redirection);

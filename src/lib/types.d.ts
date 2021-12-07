@@ -10,5 +10,4 @@ export interface Redirection {
     id: string;
     partition: string;
     longUrl: string;
-    views: number;
 }
