@@ -5,10 +5,25 @@ import { nanoid } from 'nanoid';
 import { getServerConfiguration, IServerConfiguration } from '$lib/config';
 import { CosmosClient } from '@azure/cosmos';
 
+
+export const options = async (request: Request): Promise<Response> => {
+
+    let headers: ResponseHeaders = {
+        'Content-type': 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin' :	'*'
+    };
+
+    return {
+        status: 204,
+        headers
+    };
+}
+
 export const post = async (request: Request): Promise<Response> => {
 
     let headers: ResponseHeaders = {
-        'Content-type': 'application/json; charset=UTF-8'
+        'Content-type': 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin' :	'*'
     };
 
     if (request.body === null) {
@@ -33,7 +48,7 @@ export const post = async (request: Request): Promise<Response> => {
     const database = cosmosClient.database('shortener');
     const container = database.container('redirections');
     
-    const id = nanoid();
+    const id = nanoid(16);
     const redirection: Redirection = {
         id,
         partition: id.substring(0,5),
@@ -41,8 +56,6 @@ export const post = async (request: Request): Promise<Response> => {
     };
 
     const result = await container.items.create(redirection);
-
-    console.log(result);
 
     return {
         status: 200,

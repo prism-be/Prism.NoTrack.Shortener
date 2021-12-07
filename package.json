@@ -21,9 +21,11 @@
 		"@smui/fab": "^5.0.0-beta.8",
 		"@smui/paper": "^5.0.0-beta.8",
 		"@smui/textfield": "^5.0.0-beta.8",
+		"@smui/tooltip": "^5.0.0-beta.8",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^4.33.0",
 		"@typescript-eslint/parser": "^4.33.0",
+		"dotenv": "^10.0.0",
 		"eslint": "^7.22.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-svelte3": "^3.2.0",
@@ -35,8 +37,7 @@
 		"svelte-check": "^2.2.8",
 		"svelte-preprocess": "^4.9.8",
 		"tslib": "^2.0.0",
-		"typescript": "^4.4.4",
-		"dotenv": "^10.0.0"
+		"typescript": "^4.4.4"
 	},
 	"type": "module",
 	"dependencies": {

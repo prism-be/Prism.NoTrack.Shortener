@@ -27,6 +27,7 @@ export const handle: Handle = async ({ request, resolve }) => {
         ...response,
         headers: {
             ...response.headers,
+            'Access-Control-Allow-Origin' :	'*'
         }
     };
 }
