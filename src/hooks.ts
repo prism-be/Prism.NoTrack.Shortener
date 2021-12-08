@@ -1,7 +1,7 @@
 import type { Handle } from '@sveltejs/kit';
 import { getUserIp, rateLimiter } from '$lib/rate-limit';
 
-/*export const handle: Handle = async ({ request, resolve }) => {
+export const handle: Handle = async ({ request, resolve }) => {
 
     const userIp = getUserIp(request.headers);
 
@@ -29,4 +29,4 @@ import { getUserIp, rateLimiter } from '$lib/rate-limit';
             'Access-Control-Allow-Origin' :	'*'
         }
     };
-}*/
+}
