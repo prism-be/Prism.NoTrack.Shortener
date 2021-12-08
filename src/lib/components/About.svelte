@@ -20,7 +20,6 @@
 
 	<SubTitle>What is tracked ?</SubTitle>
 	Short answer is nothing. The long answer is, of course there are some technical logs on the servers, but without any user informations.<br />
-	Also, the number of use of each link is stored in database.<br />
 	Nothing else :)<br />
 	If you want to be sure of that, you can check by yourself on
 	<a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
