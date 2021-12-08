@@ -1,4 +1,3 @@
-
 import type { Handle } from '@sveltejs/kit';
 import { getUserIp, rateLimiter } from '$lib/rate-limit';
 

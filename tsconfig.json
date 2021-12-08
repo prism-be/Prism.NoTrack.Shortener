@@ -25,19 +25,7 @@
 		"paths": {
 			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"]
-		},
-
-		/**
-		  Specific to SMUI. (The settings I like.)
-			*/
-    "noImplicitAny": true,
-    "strict": true
+		}
 	},
-	"include": [
-      "src/**/*.d.ts",
-      "src/**/*.js",
-      "src/**/*.ts",
-      "src/**/*.svelte",
-      "../../../Program Files/JetBrains/JetBrains Rider 2021.1.3/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts"
-    ]
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }
