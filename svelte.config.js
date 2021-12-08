@@ -5,12 +5,17 @@ import azure from 'svelte-adapter-azure-swa';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: [
+		preprocess({
+			postcss: true
+		})
+	],
 
 	kit: {
+		adapter: azure(),
+
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
-		adapter: azure()
+		target: '#svelte'
 	}
 };
 
