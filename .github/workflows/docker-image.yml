@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Build the Docker image
+      working-directory: backend
+      run: docker build . --file Dockerfile --tag prism-notrack:shortener-backend-$(date +%s)
