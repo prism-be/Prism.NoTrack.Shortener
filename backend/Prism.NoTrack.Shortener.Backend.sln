@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NoTrack.Shortener.Backend", "Prism.NoTrack.Shortener.Backend\Prism.NoTrack.Shortener.Backend.csproj", "{8C39DDDE-CB86-47A1-9119-A8C094727B83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NoTrack.Shortener", "Prism.NoTrack.Shortener\Prism.NoTrack.Shortener.csproj", "{7256FA7F-2861-48AB-AB95-9658C7A9DD95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8C39DDDE-CB86-47A1-9119-A8C094727B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C39DDDE-CB86-47A1-9119-A8C094727B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C39DDDE-CB86-47A1-9119-A8C094727B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
