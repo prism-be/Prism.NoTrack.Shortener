@@ -16,4 +16,4 @@ jobs:
 
     - name: Build the Docker image
       working-directory: backend
-      run: docker build . --file Prism.NoTrack.Shortener.Backend\Dockerfile --tag prism-notrack:shortener-backend-$(date +%s)
+      run: docker build . --file Prism.NoTrack.Shortener.Backend/Dockerfile --tag prism-notrack:shortener-backend-$(date +%s)
