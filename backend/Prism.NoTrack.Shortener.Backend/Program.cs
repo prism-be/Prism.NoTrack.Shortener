@@ -17,6 +17,8 @@ using Prism.NoTrack.Shortener.Options;
 using Prism.NoTrack.Shortener.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("AppSettings.json", false);
+builder.Configuration.AddJsonFile(Path.Combine("Settings", $"AppSettings.{builder.Environment.EnvironmentName}.json"), true);
 
 var applicationAssembly = typeof(EntryPoint).Assembly;
 
@@ -29,6 +31,9 @@ builder.Services.Configure<ShortenerConfiguration>(options => builder.Configurat
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
+
+app.UseHsts();
+app.UseHttpsRedirection();
 
 app.UseHealthChecks("/health");
 
