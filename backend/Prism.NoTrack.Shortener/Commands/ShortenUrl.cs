@@ -24,7 +24,7 @@ using Prism.NoTrack.Shortener.Options;
 
 public record ShortenedUrl(string Url);
 
-public record ShortenUrl([Required] string Url) : IRequest<ShortenedUrl?>;
+public record ShortenUrl(string Url) : IRequest<ShortenedUrl?>;
 
 public class ShortenUrlValidator : AbstractValidator<ShortenUrl>
 {
