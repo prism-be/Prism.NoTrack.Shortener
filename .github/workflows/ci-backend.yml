@@ -1,10 +1,8 @@
-name: Backend
+name: CI - Backend
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -13,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the sources
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Setup .NET
