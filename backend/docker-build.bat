@@ -1,0 +1,1 @@
+docker build --no-cache -t shortener:dev -f Prism.NoTrack.Shortener.Backend\Dockerfile .
