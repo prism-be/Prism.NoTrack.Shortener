@@ -1,3 +1,9 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
 .DS_Store
 node_modules
 /build
@@ -9,3 +15,5 @@ node_modules
 /.env.local
 
 .vs
+
+/backend/Prism.NoTrack.Shortener.Backend/shortener.db
