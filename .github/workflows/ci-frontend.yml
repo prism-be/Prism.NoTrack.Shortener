@@ -1,0 +1,29 @@
+name: CI - Frontend
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    path: 'frontend/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.26.1
+
+      - name: Install Packages
+        working-directory: frontend
+        run: pnpm install
+
+      - name: Build Project
+        working-directory: frontend
+        run: pnpm run build

@@ -16,7 +16,7 @@ export function About()
         I hope you will use it with respect of the work being done.
 
         <SubTitle>What is the Shortener ?</SubTitle>
-        It's a very simple tool that converts the long URL into a short one, with an id instead of the loooooooooong path, it looks better in documents and presentations.
+        It&apos;s a very simple tool that converts the long URL into a short one, with an id instead of the loooooooooong path, it looks better in documents and presentations.
 
         <SubTitle>What is tracked ?</SubTitle>
         Short answer is nothing. The long answer is, of course there are some technical logs on the servers, but without any user informations.<br/>
@@ -25,7 +25,7 @@ export function About()
         <a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
 
         <SubTitle>Free to use, but not to run</SubTitle>
-        Of course, these tools are not free to run. I make these because I really like the "Old Fashion" web, where everything was free and without ads.
+        Of course, these tools are not free to run. I make these because I really like the &quot;Old Fashion&quot; web, where everything was free and without ads.
 
         <div className="pt-2">
             If you want to support this project, you are welcome to :

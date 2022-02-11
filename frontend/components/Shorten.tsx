@@ -58,7 +58,7 @@ export function Shorten()
             <div className="w-8/12 mx-auto border rounded bg-white mt-5 mb-2 p-5">
                 <h2 className="text-2xl pb-5">Here is your shortened url!</h2>
                 <div>
-                    <a href={shortUrl} className="shortened-url" target="_blank">{shortUrl}</a>
+                    <a href={shortUrl} className="shortened-url" target="_blank" rel="noreferrer">{shortUrl}</a>
                 </div>
             </div>
         }
