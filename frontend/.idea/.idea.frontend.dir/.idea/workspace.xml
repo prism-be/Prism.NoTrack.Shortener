@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05d7bc61-f759-4b17-a510-fdede907ba19" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+    <list default="true" id="05d7bc61-f759-4b17-a510-fdede907ba19" name="Changes" comment="feat(frontend): Create the base project in next">
+      <change afterPath="$PROJECT_DIR$/components/About.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Shorten.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/design/BuyButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/design/SubTitle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/design/Title.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.frontend.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.frontend.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/hello.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -40,8 +56,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644578305687</updated>
-      <workItem from="1644578309784" duration="1050000" />
+      <workItem from="1644578309784" duration="3875000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(frontend): Create the base project in next">
+      <created>1644584933599</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1644584933599</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -63,5 +87,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="feat(frontend): Create the base project in next" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(frontend): Create the base project in next" />
   </component>
 </project>
