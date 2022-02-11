@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 using Prism.NoTrack.Shortener;
+using Prism.NoTrack.Shortener.Backend.Health;
 using Prism.NoTrack.Shortener.Behaviors;
 using Prism.NoTrack.Shortener.Commands;
 using Prism.NoTrack.Shortener.Options;
@@ -28,7 +29,8 @@ builder.Services.AddValidatorsFromAssembly(applicationAssembly);
 
 builder.Services.Configure<ShortenerConfiguration>(options => builder.Configuration.GetSection("ShortenerConfiguration").Bind(options));
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("Database");
 
 var app = builder.Build();
 
