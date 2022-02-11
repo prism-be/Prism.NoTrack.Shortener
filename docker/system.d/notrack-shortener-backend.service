@@ -1,0 +1,21 @@
+[Unit]
+Description=Docker Container NoTrack Shortener Backend
+BindsTo=docker.service
+After=docker.service
+
+[Service]
+Environment=NAME=%N
+Environment=IMG=simonbaudart/prism-notrack:shortener-backend-latest
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill ${NAME}
+ExecStartPre=-/usr/bin/docker rm ${NAME}
+ExecStart=/usr/bin/docker run --name ${NAME} \
+    -p 8081:80 \
+    -v /srv/notrack-shortener-backend/config:/app/config \
+    -v /srv/notrack-shortener-backend/data:/app/data \
+    ${IMG}
+ExecStop=/usr/bin/docker stop ${NAME}
+
+[Install]
+WantedBy=multi-user.target
