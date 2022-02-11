@@ -16,4 +16,4 @@ node_modules
 
 .vs
 
-/backend/Prism.NoTrack.Shortener.Backend/shortener.db
+/**/shortener.db

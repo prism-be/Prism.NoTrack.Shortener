@@ -18,7 +18,7 @@ using Prism.NoTrack.Shortener.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("AppSettings.json", false);
-builder.Configuration.AddJsonFile(Path.Combine("Settings", $"AppSettings.{builder.Environment.EnvironmentName}.json"), true);
+builder.Configuration.AddJsonFile(Path.Combine("config", $"AppSettings.{builder.Environment.EnvironmentName}.json"), true);
 
 var applicationAssembly = typeof(EntryPoint).Assembly;
 
