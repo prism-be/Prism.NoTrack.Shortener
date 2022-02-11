@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05d7bc61-f759-4b17-a510-fdede907ba19" name="Changes" comment="feat(frontend): Add validations">
-      <change beforePath="$PROJECT_DIR$/../.github/workflows/ci-backend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/workflows/ci-backend.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.frontend.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.frontend.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/About.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/About.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Shorten.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Shorten.tsx" afterDir="false" />
+    <list default="true" id="05d7bc61-f759-4b17-a510-fdede907ba19" name="Changes" comment="ci(frontend): Create a CI for the frontend">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644578305687</updated>
-      <workItem from="1644578309784" duration="6613000" />
+      <workItem from="1644578309784" duration="6913000" />
     </task>
     <task id="LOCAL-00001" summary="feat(frontend): Create the base project in next">
       <created>1644584933599</created>
@@ -70,7 +67,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644589317938</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ci(frontend): Create a CI for the frontend">
+      <created>1644590853548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644590853548</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +99,7 @@
     <MESSAGE value="feat(frontend): Create the base project in next" />
     <MESSAGE value="feat(frontend): Create the view in React" />
     <MESSAGE value="feat(frontend): Add validations" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(frontend): Add validations" />
+    <MESSAGE value="ci(frontend): Create a CI for the frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci(frontend): Create a CI for the frontend" />
   </component>
 </project>
