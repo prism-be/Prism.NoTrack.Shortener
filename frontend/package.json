@@ -1,6 +1,7 @@
 {
   "name": "notrack-shortener",
   "private": true,
+  "version": "1.0.0-pre",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export -o dist",
