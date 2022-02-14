@@ -30,7 +30,7 @@ jobs:
 
     - name: Build the Docker image
       working-directory: backend
-      run: docker build . --file Prism.NoTrack.Shortener.Backend/Dockerfile --tag simonbaudart/prism-notrack:shortener-backend-latest --tag simonbaudart/prism-notrack:shortener-backend-($informationalVersion)
+      run: docker build . --file Prism.NoTrack.Shortener.Backend/Dockerfile --tag simonbaudart/prism-notrack:shortener-backend-latest --tag simonbaudart/prism-notrack:shortener-backend-${{env.VERSION_INFORMATIONAL}}
 
     - name: Docker - Login
       uses: docker/login-action@v1.12.0
@@ -42,7 +42,7 @@ jobs:
       working-directory: backend
       run: |
         docker push simonbaudart/prism-notrack:shortener-backend-latest
-        docker push simonbaudart/prism-notrack:shortener-backend-($informationalVersion)
+        docker push simonbaudart/prism-notrack:shortener-backend-${{env.VERSION_INFORMATIONAL}}
 
   frontend:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
 
       - name: Build the Docker image
         working-directory: frontend
-        run: docker build . --file Dockerfile --tag simonbaudart/prism-notrack:shortener-frontend-latest --tag simonbaudart/prism-notrack:shortener-frontend-($informationalVersion)
+        run: docker build . --file Dockerfile --tag simonbaudart/prism-notrack:shortener-frontend-latest --tag simonbaudart/prism-notrack:shortener-frontend-${{env.VERSION_INFORMATIONAL}}
 
       - name: Docker - Login
         uses: docker/login-action@v1.12.0
@@ -79,4 +79,4 @@ jobs:
         working-directory: backend
         run: |
           docker push simonbaudart/prism-notrack:shortener-frontend-latest
-          docker push simonbaudart/prism-notrack:shortener-frontend-($informationalVersion)
+          docker push simonbaudart/prism-notrack:shortener-frontend-${{env.VERSION_INFORMATIONAL}}
