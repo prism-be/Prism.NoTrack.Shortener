@@ -12,8 +12,11 @@ ExecStartPre=-/usr/bin/docker kill ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
 ExecStart=/usr/bin/docker run --name ${NAME} \
     -p 80:80 \
+    -p 443:443 \
+    -v /srv/nginx/vhost.d:/etc/nginx/vhost.d \
+    -v /srv/nginx/certs.d:/etc/nginx/certs \
+    -v /srv/nginx/html:/usr/share/nginx/html \
     -v /var/run/docker.sock:/tmp/docker.sock:ro \
-    -v /srv/nginx/vhost.d:/etc/nginx/vhost.d:ro \
     ${IMG}
 ExecStop=/usr/bin/docker stop ${NAME}
 
