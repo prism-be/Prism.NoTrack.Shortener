@@ -35,7 +35,7 @@ jobs:
       - name: FrontEnd - Setup PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.26.1
+          version: 6.31.0
 
       - name: FrontEnd - Install Packages
         working-directory: frontend
