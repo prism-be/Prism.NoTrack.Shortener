@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace Prism.NoTrack;
+namespace Prism.NoTrack.Shortener;
 
 using System.Runtime.Serialization;
 
@@ -25,5 +25,11 @@ public class InvalidModelException : Exception
         this.Validations = info.GetValue(nameof(this.Validations), typeof(Dictionary<string, string[]>)) as Dictionary<string, string[]> ?? new Dictionary<string, string[]>();
     }
 
-    public Dictionary<string, string[]> Validations { get; }
+    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        base.GetObjectData(info, context);
+        this.Validations = info.GetValue(nameof(this.Validations), typeof(Dictionary<string, string[]>)) as Dictionary<string, string[]> ?? new Dictionary<string, string[]>();
+    }
+
+    public Dictionary<string, string[]> Validations { get; set; }
 }
