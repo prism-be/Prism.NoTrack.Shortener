@@ -12,8 +12,8 @@ ExecStartPre=-/usr/bin/docker kill ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
 ExecStart=/usr/bin/docker run --name ${NAME} \
     -p 8082:80 \
-    --env "VIRTUAL_HOST=ncc-1703.polytope.be" \
-    --env "LETSENCRYPT_HOST=ncc-1703.polytope.be" \
+    --env "VIRTUAL_HOST=s.yourdomain.tld" \
+    --env "LETSENCRYPT_HOST=s.yourdomain.tld" \
     --env "VIRTUAL_PATH=/" \
     ${IMG}
 ExecStop=/usr/bin/docker stop ${NAME}

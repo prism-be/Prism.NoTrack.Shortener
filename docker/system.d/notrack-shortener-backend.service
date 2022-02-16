@@ -14,9 +14,9 @@ ExecStart=/usr/bin/docker run --name ${NAME} \
     -p 8081:80 \
     -v /srv/notrack-shortener-backend/config:/app/config \
     -v /srv/notrack-shortener-backend/data:/app/data \
-    --env "VIRTUAL_HOST=ncc-1703.polytope.be" \
-    --env "LETSENCRYPT_HOST=ncc-1703.polytope.be" \
-    --env "VIRTUAL_PATH=/api" \
+    --env "VIRTUAL_HOST=s.yourdomain.tld" \
+    --env "LETSENCRYPT_HOST=s.yourdomain.tld" \
+    --env "VIRTUAL_PATH=~^/(api|r)/" \
     ${IMG}
 ExecStop=/usr/bin/docker stop ${NAME}
 
