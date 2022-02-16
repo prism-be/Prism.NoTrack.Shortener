@@ -24,19 +24,17 @@ export function Shorten()
 
         if (valid)
         {
-            fetch('/api/shorten', {
+            const response = await fetch('/api/shorten', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
-            }).then((response) =>
-            {
-                response.json().then((shortUrl: ShortUrl) =>
-                {
-                    setShortUrl(shortUrl.url);
-                });
             });
+
+            const responseJson: ShortUrl = await response.json();
+
+            setShortUrl(responseJson.url);
         }
     }
 
