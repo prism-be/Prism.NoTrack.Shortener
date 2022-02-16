@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build:
+  build-backend:
 
     runs-on: ubuntu-latest
 
@@ -24,11 +24,14 @@ jobs:
         with:
           dotnet-version: 6.x
 
+      - name: Trick for Sonar
+        run: rm -f ./sonar-project.properties
+
       - name: BackEnd - Build and Analyze
         uses: highbyte/sonarscan-dotnet@v2.1.2
         with:
-          sonarProjectKey: prism-be_Prism.NoTrack.Shortener
-          sonarProjectName: Prism.NoTrack.Shortener
+          sonarProjectKey: prism-be_Prism.NoTrack.Shortener.BackEnd
+          sonarProjectName: Prism.NoTrack.Shortener.Backend
           sonarOrganization: prism-be
           dotnetDisableTests: true
           dotnetBuildArguments: ./backend
@@ -36,21 +39,31 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: FrontEnd - Setup PNPM
+  build-frontend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.31.0
 
-      - name: FrontEnd - Install Packages
+      - name: Install Packages
         working-directory: frontend
         run: pnpm install
 
-      - name: FrontEnd - Build Project
+      - name: Build Project
         working-directory: frontend
         run: pnpm run build
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
