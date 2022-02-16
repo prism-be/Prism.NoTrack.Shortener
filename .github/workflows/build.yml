@@ -1,4 +1,4 @@
-name: CI - Frontend
+name: CI
 
 on:
   workflow_dispatch:
@@ -7,8 +7,6 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - 'frontend/**'
 
 jobs:
   build:
@@ -19,28 +17,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
-      - name: Setup PNPM
+      - name: BackEnd - Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.x
+
+      - name: BackEnd - Restore dependencies
+        working-directory: backend
+        run: dotnet restore
+
+      - name: BackEnd - Build
+        working-directory: backend
+        run: dotnet build --no-restore
+
+      - name: FrontEnd - Setup PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.26.1
 
-      - name: Install Packages
+      - name: FrontEnd - Install Packages
         working-directory: frontend
         run: pnpm install
 
-      - name: Build Project
+      - name: FrontEnd - Build Project
         working-directory: frontend
         run: pnpm run build
 
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
