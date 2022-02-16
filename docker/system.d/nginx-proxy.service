@@ -1,20 +1,22 @@
 [Unit]
-Description=Docker Container NoTrack Shortener Frontend
+Description=Docker Container Nginx Reverse Proxy
 BindsTo=docker.service
 After=docker.service
 
 [Service]
 Environment=NAME=%N
-Environment=IMG=simonbaudart/prism-notrack:shortener-frontend-latest
+Environment=IMG=nginxproxy/nginx-proxy:dev
 Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
 ExecStart=/usr/bin/docker run --name ${NAME} \
-    -p 8082:80 \
-    --env "VIRTUAL_HOST=s.yourdomain.tld" \
-    --env "LETSENCRYPT_HOST=s.yourdomain.tld" \
-    --env "VIRTUAL_PATH=/" \
+    -p 80:80 \
+    -p 443:443 \
+    -v /srv/nginx/vhost.d:/etc/nginx/vhost.d \
+    -v /srv/nginx/certs.d:/etc/nginx/certs \
+    -v /srv/nginx/html:/usr/share/nginx/html \
+    -v /var/run/docker.sock:/tmp/docker.sock:ro \
     ${IMG}
 ExecStop=/usr/bin/docker stop ${NAME}
 

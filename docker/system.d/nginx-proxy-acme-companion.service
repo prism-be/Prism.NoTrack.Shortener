@@ -1,20 +1,20 @@
 [Unit]
-Description=Docker Container NoTrack Shortener Frontend
+Description=Docker Container Acme Companion
 BindsTo=docker.service
 After=docker.service
 
 [Service]
 Environment=NAME=%N
-Environment=IMG=simonbaudart/prism-notrack:shortener-frontend-latest
+Environment=IMG=nginxproxy/acme-companion
 Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
 ExecStart=/usr/bin/docker run --name ${NAME} \
-    -p 8082:80 \
-    --env "VIRTUAL_HOST=s.yourdomain.tld" \
-    --env "LETSENCRYPT_HOST=s.yourdomain.tld" \
-    --env "VIRTUAL_PATH=/" \
+    --volumes-from nginx-proxy \
+    -v /var/run/docker.sock:/var/run/docker.sock:ro \
+    -v /srv/acme-companion:/etc/acme.sh \
+    --env "DEFAULT_EMAIL=mail@yourdomain.tld" \
     ${IMG}
 ExecStop=/usr/bin/docker stop ${NAME}
 
