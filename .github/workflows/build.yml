@@ -24,13 +24,16 @@ jobs:
         with:
           dotnet-version: 6.x
 
-      - name: BackEnd - Restore dependencies
-        working-directory: backend
-        run: dotnet restore
-
-      - name: BackEnd - Build
-        working-directory: backend
-        run: dotnet build --no-restore
+      - name: BackEnd - Build and Analyze
+        uses: highbyte/sonarscan-dotnet@v2.1.2
+        with:
+          sonarProjectKey: prism-be_Prism.NoTrack.Shortener
+          sonarProjectName: Prism.NoTrack.Shortener
+          sonarOrganization: prism-be
+          dotnetBuildArguments: ./backend
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: FrontEnd - Setup PNPM
         uses: pnpm/action-setup@v2.0.1
