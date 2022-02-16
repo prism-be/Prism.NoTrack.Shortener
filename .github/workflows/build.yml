@@ -30,6 +30,7 @@ jobs:
           sonarProjectKey: prism-be_Prism.NoTrack.Shortener
           sonarProjectName: Prism.NoTrack.Shortener
           sonarOrganization: prism-be
+          dotnetDisableTests: true
           dotnetBuildArguments: ./backend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
