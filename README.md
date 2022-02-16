@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prism-be_Prism.NoTrack.Shortener&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prism-be_Prism.NoTrack.Shortener)
+
 # The NoTrack project
 The No-Track project is a set of tools that can be used :
 - For free
