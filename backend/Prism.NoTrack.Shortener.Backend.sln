@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NoTrack.Shortener.Bac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NoTrack.Shortener", "Prism.NoTrack.Shortener\Prism.NoTrack.Shortener.csproj", "{7256FA7F-2861-48AB-AB95-9658C7A9DD95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.NoTrack.Shortener.Migrate", "tools\Prism.NoTrack.Shortener.Migrate\Prism.NoTrack.Shortener.Migrate.csproj", "{6CC7984C-B0E9-4372-BDAB-48FF5746C041}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7256FA7F-2861-48AB-AB95-9658C7A9DD95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC7984C-B0E9-4372-BDAB-48FF5746C041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC7984C-B0E9-4372-BDAB-48FF5746C041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC7984C-B0E9-4372-BDAB-48FF5746C041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC7984C-B0E9-4372-BDAB-48FF5746C041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
