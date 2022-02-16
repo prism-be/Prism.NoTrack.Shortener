@@ -1,4 +1,7 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prism-be_Prism.NoTrack.Shortener&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prism-be_Prism.NoTrack.Shortener)
+| Service  | Sonar                                                                                                                                                                                                                               |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Backend  | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prism-be_Prism.NoTrack.Shortener&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prism-be_Prism.NoTrack.Shortener)                 |
+| Frontend | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=prism-be_Prism.NoTrack.Shortener.BackEnd&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=prism-be_Prism.NoTrack.Shortener.BackEnd) |
 
 # The NoTrack project
 The No-Track project is a set of tools that can be used :
