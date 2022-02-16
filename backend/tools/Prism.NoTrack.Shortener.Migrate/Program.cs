@@ -1,10 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// -----------------------------------------------------------------------
+//  <copyright file="Program.cs" company="Prism">
+//  Copyright (c) Prism. All rights reserved.
+//  </copyright>
+// -----------------------------------------------------------------------
+
+using System.Diagnostics.CodeAnalysis;
 
 using LiteDB;
 
 using Microsoft.Azure.Cosmos;
 
 using Prism.NoTrack.Shortener.Model;
+
+[assembly: ExcludeFromCodeCoverage]
 
 var cosmosDbConnectionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTIONSTRING");
 var liteDbConnectionString = Environment.GetEnvironmentVariable("LITEDB_CONNECTIONSTRING");
