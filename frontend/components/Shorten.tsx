@@ -32,9 +32,9 @@ export function Shorten()
                 },
             }).then((response) =>
             {
-                response.json().then((shortUrl: ShortUrl) =>
+                response.json().then((response: ShortUrl) =>
                 {
-                    setShortUrl(shortUrl.url);
+                    setShortUrl(response.url);
                 });
             });
         }
