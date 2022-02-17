@@ -21,8 +21,7 @@ export function About()
         <SubTitle>What is tracked ?</SubTitle>
         Short answer is nothing. The long answer is, of course there are some technical logs on the servers, but without any user informations.<br/>
         Nothing else :)<br/>
-        If you want to be sure of that, you can check by yourself on
-        <a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
+        If you want to be sure of that, you can check by yourself on <a href="https://github.com/simonbaudart/Prism.NoTrack.Shortener">this repository</a>.
 
         <SubTitle>Free to use, but not to run</SubTitle>
         Of course, these tools are not free to run. I make these because I really like the &quot;Old Fashion&quot; web, where everything was free and without ads.
