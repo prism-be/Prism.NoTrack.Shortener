@@ -50,7 +50,8 @@ public class ValidationBehaviorTests
 
         // Act and Assert
         var getLongUrl = new GetLongUrl(string.Empty);
-        await validationBehavior.Handle(getLongUrl, default, Mock.Of<RequestHandlerDelegate<LongUrl?>>());
+        var result = await validationBehavior.Handle(getLongUrl, default, Mock.Of<RequestHandlerDelegate<LongUrl?>>());
+        Assert.Null(result);
     }
 
     [Fact]
@@ -66,6 +67,7 @@ public class ValidationBehaviorTests
 
         // Act
         var getLongUrl = new GetLongUrl("42");
-        await validationBehavior.Handle(getLongUrl, default, Mock.Of<RequestHandlerDelegate<LongUrl?>>());
+        var result = await validationBehavior.Handle(getLongUrl, default, Mock.Of<RequestHandlerDelegate<LongUrl?>>());
+        Assert.Null(result);
     }
 }
