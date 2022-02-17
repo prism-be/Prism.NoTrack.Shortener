@@ -34,7 +34,7 @@ jobs:
           sonarProjectName: Prism.NoTrack.Shortener.Backend
           sonarOrganization: prism-be
           dotnetBuildArguments: ./backend
-          dotnetTestArguments: ./backend
+          dotnetTestArguments: ./backend --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
