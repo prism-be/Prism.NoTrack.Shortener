@@ -6,6 +6,8 @@
 
 using FluentValidation;
 
+using LiteDB;
+
 using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,8 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddValidatorsFromAssembly(applicationAssembly);
 
 builder.Services.Configure<ShortenerConfiguration>(options => builder.Configuration.GetSection("ShortenerConfiguration").Bind(options));
+
+builder.Services.AddScoped<ILiteDatabase>(_ => new LiteDatabase(builder.Configuration["ShortenerConfiguration:ConnectionString"]));
 
 builder.Services.AddHealthChecks()
     .AddCheck<DatabaseHealthCheck>("Database");

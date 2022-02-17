@@ -38,10 +38,12 @@ public class ShortenUrlHandler : IRequestHandler<ShortenUrl, ShortenedUrl?>
 {
     private readonly ShortenerConfiguration configuration;
     private readonly ILogger<ShortenUrlHandler> logger;
+    private readonly ILiteDatabase liteDatabase;
 
-    public ShortenUrlHandler(ILogger<ShortenUrlHandler> logger, IOptions<ShortenerConfiguration> configuration)
+    public ShortenUrlHandler(ILogger<ShortenUrlHandler> logger, IOptions<ShortenerConfiguration> configuration, ILiteDatabase liteDatabase)
     {
         this.logger = logger;
+        this.liteDatabase = liteDatabase;
         this.configuration = configuration.Value;
     }
 
@@ -51,8 +53,7 @@ public class ShortenUrlHandler : IRequestHandler<ShortenUrl, ShortenedUrl?>
 
         var id = await Nanoid.GenerateAsync(size: 16);
 
-        using var database = new LiteDatabase(this.configuration.ConnectionString);
-        var collection = database.GetCollection<Redirection>("customers");
+        var collection = this.liteDatabase.GetCollection<Redirection>("customers");
 
         var redirection = new Redirection(id, request.Url);
 
