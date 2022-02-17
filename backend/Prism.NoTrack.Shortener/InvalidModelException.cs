@@ -6,6 +6,7 @@
 
 namespace Prism.NoTrack.Shortener;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 [Serializable]
@@ -20,11 +21,13 @@ public class InvalidModelException : Exception
         this.Validations = validations;
     }
 
+    [ExcludeFromCodeCoverage]
     protected InvalidModelException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
         this.Validations = info.GetValue(nameof(this.Validations), typeof(Dictionary<string, string[]>)) as Dictionary<string, string[]> ?? new Dictionary<string, string[]>();
     }
 
+    [ExcludeFromCodeCoverage]
     public override void GetObjectData(SerializationInfo info, StreamingContext context)
     {
         base.GetObjectData(info, context);
