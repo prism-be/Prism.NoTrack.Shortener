@@ -21,7 +21,7 @@ using Prism.NoTrack.Shortener.Options;
 
 using Xunit;
 
-public class ShortenedUrlTest
+public class ShortenedUrlTests
 {
     [Fact]
     public async Task Handle_ShouldReturnId()

@@ -32,21 +32,20 @@ public class GetLongUrlValidator : AbstractValidator<GetLongUrl>
 
 public class GetLongUrlHandler : IRequestHandler<GetLongUrl, LongUrl?>
 {
-    private readonly ShortenerConfiguration configuration;
+    private readonly ILiteDatabase liteDatabase;
     private readonly ILogger<GetLongUrlHandler> logger;
 
-    public GetLongUrlHandler(ILogger<GetLongUrlHandler> logger, IOptions<ShortenerConfiguration> configuration)
+    public GetLongUrlHandler(ILogger<GetLongUrlHandler> logger, ILiteDatabase liteDatabase)
     {
         this.logger = logger;
-        this.configuration = configuration.Value;
+        this.liteDatabase = liteDatabase;
     }
 
     public Task<LongUrl?> Handle(GetLongUrl request, CancellationToken cancellationToken)
     {
         this.logger.LogDebug("Requesting : {request}", request);
 
-        using var database = new LiteDatabase(this.configuration.ConnectionString);
-        var collection = database.GetCollection<Redirection>("customers");
+        var collection = this.liteDatabase.GetCollection<Redirection>("customers");
 
         var longUrl = collection.FindOne(x => x.Id == request.Id);
 
