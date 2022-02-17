@@ -6,8 +6,6 @@
 
 namespace Prism.NoTrack.Shortener.Commands;
 
-using System.ComponentModel.DataAnnotations;
-
 using FluentValidation;
 
 using LiteDB;
@@ -60,7 +58,12 @@ public class ShortenUrlHandler : IRequestHandler<ShortenUrl, ShortenedUrl?>
         collection.Insert(redirection);
         collection.EnsureIndex(x => x.Id);
 
+        if (string.IsNullOrWhiteSpace(this.configuration.ShortDomain))
+        {
+            throw new ArgumentNullException(nameof(this.configuration), "The ShortDomain is not configured");
+        }
+
         this.logger.LogDebug("The url {url} has been stored with id : {id}", redirection.LongUrl, redirection.Id);
-        return new ShortenedUrl($"{this.configuration.ShortDomain?.TrimEnd('/')}/r/{id}");
+        return new ShortenedUrl($"{this.configuration.ShortDomain.TrimEnd('/')}/r/{id}");
     }
 }
