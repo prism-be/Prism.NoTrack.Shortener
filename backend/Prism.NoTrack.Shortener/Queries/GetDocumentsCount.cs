@@ -19,17 +19,16 @@ public record GetDocumentsCount : IRequest<int>;
 
 public class GetDocumentsCountHandler : IRequestHandler<GetDocumentsCount, int>
 {
-    private readonly ShortenerConfiguration configuration;
+    private readonly ILiteDatabase liteDatabase;
 
-    public GetDocumentsCountHandler(IOptions<ShortenerConfiguration> configuration)
+    public GetDocumentsCountHandler(ILiteDatabase liteDatabase)
     {
-        this.configuration = configuration.Value;
+        this.liteDatabase = liteDatabase;
     }
 
     public Task<int> Handle(GetDocumentsCount request, CancellationToken cancellationToken)
     {
-        using var database = new LiteDatabase(this.configuration.ConnectionString);
-        var collection = database.GetCollection<Redirection>("customers");
+        var collection = this.liteDatabase.GetCollection<Redirection>("customers");
 
         return Task.FromResult(collection.Count());
     }
