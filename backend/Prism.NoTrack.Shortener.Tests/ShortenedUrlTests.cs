@@ -6,6 +6,7 @@
 
 namespace Prism.NoTrack.Shortener.Tests;
 
+using System;
 using System.Threading.Tasks;
 
 using LiteDB;
@@ -42,6 +43,26 @@ public class ShortenedUrlTests
         Assert.NotNull(shortened);
         Assert.StartsWith(configuration.Value.ShortDomain + "r", shortened!.Url);
         liteCollectionMock.Verify(x => x.Insert(It.IsAny<Redirection>()));
+    }
+
+    [Fact]
+    public async Task Handle_MustHaveShortDomain()
+    {
+        // Arrange
+        var loggerMock = new Mock<ILogger<ShortenUrlHandler>>();
+        var liteCollectionMock = new Mock<ILiteCollection<Redirection>>();
+        var databaseMock = new Mock<ILiteDatabase>();
+        databaseMock.Setup(x => x.GetCollection<Redirection>("customers", BsonAutoId.ObjectId)).Returns(liteCollectionMock.Object);
+        var configuration = Options.Create(new ShortenerConfiguration { ShortDomain = null });
+        var shortenUrlHandler = new ShortenUrlHandler(loggerMock.Object, configuration, databaseMock.Object);
+
+        // Act
+        var shortenUrl = new ShortenUrl("https://github.com/prism-be/Prism.NoTrack.Shortener/");
+        var exception = await Assert.ThrowsAsync<ApplicationException>(async () => await shortenUrlHandler.Handle(shortenUrl, default));
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("The ShortDomain is not configured", exception.Message);
     }
 
     [Fact]
