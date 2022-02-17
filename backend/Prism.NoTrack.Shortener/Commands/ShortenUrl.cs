@@ -60,7 +60,7 @@ public class ShortenUrlHandler : IRequestHandler<ShortenUrl, ShortenedUrl?>
 
         if (string.IsNullOrWhiteSpace(this.configuration.ShortDomain))
         {
-            throw new ApplicationException("The ShortDomain is not configured");
+            throw new ArgumentNullException(nameof(this.configuration), "The ShortDomain is not configured");
         }
 
         this.logger.LogDebug("The url {url} has been stored with id : {id}", redirection.LongUrl, redirection.Id);

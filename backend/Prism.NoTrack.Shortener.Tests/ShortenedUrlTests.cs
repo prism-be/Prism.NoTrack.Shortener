@@ -58,11 +58,11 @@ public class ShortenedUrlTests
 
         // Act
         var shortenUrl = new ShortenUrl("https://github.com/prism-be/Prism.NoTrack.Shortener/");
-        var exception = await Assert.ThrowsAsync<ApplicationException>(async () => await shortenUrlHandler.Handle(shortenUrl, default));
+        var exception = await Assert.ThrowsAsync<ArgumentNullException>(async () => await shortenUrlHandler.Handle(shortenUrl, default));
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("The ShortDomain is not configured", exception.Message);
+        Assert.StartsWith("The ShortDomain is not configured", exception.Message);
     }
 
     [Fact]
