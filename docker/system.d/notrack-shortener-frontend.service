@@ -11,7 +11,7 @@ RestartSec=10
 ExecStartPre=-/usr/bin/docker kill ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
 ExecStart=/usr/bin/docker run --name ${NAME} \
-    -p 8082:80 \
+    -p 127.0.0.1:8082:80 \
     --env "VIRTUAL_HOST=s.yourdomain.tld" \
     --env "LETSENCRYPT_HOST=s.yourdomain.tld" \
     --env "VIRTUAL_PATH=/" \
