@@ -16,7 +16,7 @@ RUN pnpm install
 RUN pnpm run build
 
 # nginx state for serving content
-FROM nginx:latest as final
+FROM nginx:alpine as final
 EXPOSE 80
 EXPOSE 443
 WORKDIR /usr/share/nginx/html
