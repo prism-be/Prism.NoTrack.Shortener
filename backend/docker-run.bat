@@ -1,1 +1,1 @@
-docker run -p 8080:80 --rm -v "c:\docker\shortener":/app/Settings shortener:dev
+docker run -p 8080:80 --rm -v "c:\docker\shortener\data":/app/data -v "c:\docker\shortener\config":/app/config shortener-backend:dev

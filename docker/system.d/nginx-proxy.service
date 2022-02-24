@@ -5,7 +5,7 @@ After=docker.service
 
 [Service]
 Environment=NAME=%N
-Environment=IMG=nginxproxy/nginx-proxy:dev
+Environment=IMG=nginxproxy/nginx-proxy:dev-alpine
 Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill ${NAME}
