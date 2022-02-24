@@ -38,7 +38,7 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
-app.UseHealthChecks("/health");
+app.UseHealthChecks("/api/health");
 
 app.MapPost("api/shorten", async ([FromBody] ShortenUrl shortenUrl, IMediator mediator) => await mediator.Send(shortenUrl));
 
