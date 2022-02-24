@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <PackageVersion>1.0.0-pre</PackageVersion>
+        <InvariantGlobalization>false</InvariantGlobalization>
     </PropertyGroup>
 
     <PropertyGroup>
