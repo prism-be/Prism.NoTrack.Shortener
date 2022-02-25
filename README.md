@@ -27,7 +27,7 @@ Nothing else :)
 If you want to be sure of that, you can check by yourself on this repository.
 
 ## Free to use, but not to run
-Of course, these tools are not free to run. I make these because I really like the old web, with no ad, no track and simple content.
+Of course, these tools are not free to run. I make these because I really like the old web, with no ad, no tracking and simple content.
 
 If you want to support this project, you are welcome to :
 
